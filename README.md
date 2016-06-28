@@ -12,27 +12,38 @@ Terminology leans more towards Agile / DevOps methodology where "stories" rule.
  
 ##ulp_cmds.txt:
 ```
-  STORY "MY story"
-  TESTCASE "My TC"
-  clock seconds
-  for { set i 10 } { $i < 20 } { incr i} {
-      cli 1 1 1  set complete-on-space false
-  }
+STORY "MY story"
+TESTCASE "My TC"
+clock seconds
+for { set i 10 } { $i < 20 } { incr i} {
+    cli 1 1 1  set complete-on-space false
+}
 
-  cli 1 1 1  set paginate false
-  cli 1 1 1  configure
+cli 1 1 1  set paginate false
+cli 1 1 1  configure
+cli 1 1 1  sudo su root
+cli 1 1 1  1finity
+cli 1 1 1  run show eqpt shelf pi
+cli 1 1 1  set system ntp disabled
+cli 1 1 1  commit
 
-  for { set i 10 } { $i < 20 } { incr i} {
-      cli 1 2 1  set complete-on-space false
-  }
+for { set i 10 } { $i < 20 } { incr i} {
+    cli 2 1 1  set complete-on-space false
+}
 
- # To demonstrate connection to 
-  cli 1 2 1  set paginate false
-  cli 1 2 1  configure
+# Address cluster#2, Device#1, cli port#1
+cli 2 1 1  set paginate false
+cli 2 1 1  configure
+cli 2 1 1  sudo su root
+cli 2 1 1  1finity
+cli 2 1 1  run show eqpt shelf pi
+cli 2 1 1  set system ntp disabled
+cli 2 1 1  commit
 
-  clock seconds
-  TESTCASE_END
-  STORY_END
+clock seconds
+TESTCASE_END
+STORY_END
+
 ```
 For above to work, "iotdev1.sh" will need to exist in the ~/plugins or a site common directory (like /opt/cleber_plugins).
 * Please note: For simpliciy, plugins are bash scripts.
