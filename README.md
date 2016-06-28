@@ -9,6 +9,11 @@ Terminology leans more towards Agile / DevOps methodology where "stories" rule.
 
 ##Sample execution:
  `cleber --exp /local/expect --site_plugins /opt/cleber_plugins --plugins ~/plugins --config iotdev1:iotdev1 --cmds /opt/scripts/ulp_cmds.txt`
+  OR
+  `cleber --exp /local/expect --site_plugins /opt/cleber_plugins --plugins ~/plugins --config ~/myconfigs/iotdev-config --cmds /opt/scripts/ulp_cmds.txt`
+ * Important point to note:
+  * If the --config option points to a file, it will be prased, else, the config pattern should just be per following format:
+  * <plugin>:<plugin>
  
 ##ulp_cmds.txt:
 ```
@@ -53,7 +58,7 @@ For above to work, "iotdev1.sh" will need to exist in the ~/plugins or a site co
 * 
 
 
-##pluggin format:
+##plugin format:
 * A bash script.
 * Should provide a executable command-line in the end.
 * Look for sample iotdev1 example in the `./plugins`, a subdirectory in this repository
